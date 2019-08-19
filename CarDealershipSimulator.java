@@ -27,8 +27,9 @@ public static void main(String[] args)
 		//a new CarDealership object
 		CarDealership dealer = new CarDealership();
 
-		//A string used to hold the display of the last purchase
+		//A string used to hold the display of the last purchase and string for returns
 		String bought = "";
+		String returnC = "";
 	  	  
 		// an (initially empty) array list of type Car
 		ArrayList<Car> newCars = new ArrayList<Car>(); 
@@ -165,8 +166,6 @@ public static void main(String[] args)
 								{
 									int id = commandLine.nextInt();
 									dealer.returnCar(id);
-									System.out.println("Car being RETURNED: " + bought + "\n");
-									bought = "";
 									break;
 								
 		

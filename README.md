@@ -1,5 +1,4 @@
 # Car-Dealership-Simulator
-/*
 CPS 209 Assignment 2
 Programmer: Alliyah Mohammed                              
 Date: Friday April 12th, 2019                             
@@ -8,7 +7,7 @@ This program is a car dealership simulator, that
 takes in an array list of various car objects and              
 allows the user to sort, buy or return the cars. As well as    
 see various info regarding all of the sales. File              
-I/O is used to read in cars from a text file.*/
+I/O is used to read in cars from a text file.
 
 Note: Program works as intended, however due to the nature of the random generator there is the possibility
       of duplicate VIN and ID numbers. The commands for the program are as follows: 

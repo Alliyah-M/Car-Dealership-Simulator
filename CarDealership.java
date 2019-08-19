@@ -19,6 +19,7 @@ public class CarDealership
 
     //Instance Variables
     private ArrayList<Car> cars;
+    private ArrayList<Transaction> transactions;
     private SalesTeam dealerTeam = new SalesTeam();
     private AccountingSystem dealerAS = new AccountingSystem();
     private double minPrice;
@@ -39,6 +40,7 @@ public class CarDealership
     public CarDealership()
     {
         cars = new ArrayList<Car>();
+	transactions = new ArrayList<Transaction>();
     }
 
     /**
@@ -146,21 +148,22 @@ public class CarDealership
      */
     public void returnCar(int trans)
     {
-        Transaction lastTrans = dealerAS.getTransaction(trans);
 
-        //Chceck for invalid input
-        if(lastTrans == null && dealerAS.numberOfTrans() == 0)
+        transactions.add(dealerAS.getTransaction(trans));
+
+        //Check for invalid input
+        if(transactions.size() == 0 && dealerAS.numberOfTrans() == 0)
         {
             throw new IllegalStateException();
         }
 
-        if(lastTrans == null)
+        if(transactions.size() == 0)
         {
             throw new NullPointerException();
         }
 
-        
-        Car retCar = lastTrans.getCar();
+        Transaction retT = dealerAS.getTransaction(trans);
+        Car retCar = retT.getCar();
 
         
 
@@ -193,25 +196,30 @@ public class CarDealership
 
         } 
 
-        String type = lastTrans.getType();
+        String type = retT.getType();
         
         if(type.equals("BUY"))
         {
 
             int returnDay = rand.nextInt(17) + 15;
 
-            Calendar newDate = lastTrans.getCalendar();
+            Calendar newDate = retT.getCalendar();
 
             newDate.set(Calendar.DAY_OF_MONTH, returnDay);
 
-            dealerAS.add(newDate, lastTrans.getCar(), lastTrans.getSP(), "RET", lastTrans.getPrice());
+            dealerAS.add(newDate, retT.getCar(), retT.getSP(), "RET", retT.getPrice());
 
-            cars.add(lastTrans.getCar());
+            cars.add(retT.getCar());
             
             totalCarsRet++;
+		
+	    retT.setType("RET");
+
 
 
         }
+
+	System.out.println("Car being RETURNED: " + retT.display() + "\n");
 
 
     
@@ -364,4 +372,5 @@ public class CarDealership
 
 
 }
+
 

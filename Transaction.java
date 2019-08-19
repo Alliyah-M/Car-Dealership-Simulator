@@ -88,6 +88,16 @@ public class Transaction
         return transType;
     }
 
+    
+    /**
+     * Method to set the type of transaction (BUY/RET)
+     * @param newT is the string of the new type of transaction
+     */
+     public void setType(String newT)
+    {
+	transType = newT;
+    }
+
     /**
      * Method to get the price of the car from the transaction
      * @return the price of the car
